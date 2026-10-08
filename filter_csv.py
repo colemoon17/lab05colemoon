@@ -23,6 +23,20 @@ def main():
     #   data row (its values joined by commas) whose value in that column equals
     #   args.value.
 
+    with open(args.filename, "r") as file:
+        text = csv.reader(file)
+        csvFormatted = []
+        for row in text:
+            csvFormatted.append(row)
+
+    for idx, row in enumerate(csvFormatted):
+        if idx == 0:
+            column = row.index(args.column)
+        else:
+            if row[column] == args.value:
+                print(",".join(row))
+    
+
 
 if __name__ == "__main__":
     main()
